@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<ruleset name="Leapfrog">
+
+    <description>
+        A coding standard based on an early Zend Framework coding standard. Note that this standard is out of
+        date.
+    </description>
+
+    <rule ref="PSR2">
+        <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+        <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
+    </rule>
+    <!--
+   You can hard-code ignore patterns directly into your
+   custom standard so you don't have to specify the
+   patterns on the command line.
+
+   The following two tags are equivalent to the command line
+   argument: -ignore=*/tests/*,*/data/*
+    -->
+    <exclude-pattern>*/tests/*</exclude-pattern>
+    <exclude-pattern>*/data/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/config/*</exclude-pattern>
+    <exclude-pattern>*/migrate/*</exclude-pattern>
+
+
+    <arg name="report" value="full"/>
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+
+    <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+
+    <rule ref="PEAR.Classes.ClassDeclaration"/>
+
+    <rule ref="PEAR.ControlStructures.ControlSignature"/>
+    <rule ref="PEAR.Functions.ValidDefaultValue"/>
+
+    <rule ref="PEAR.WhiteSpace.ScopeClosingBrace"/>
+    <!--
+       There is a special internal error message produced by PHP_CodeSniffer
+       when it is unable to detect code in a file, possible due to
+       the use of short open tags even though php.ini disables them.
+       You can disable this message in the same way as sniff messages.
+
+       Again, the code here will be displayed in the PHP_CodeSniffer
+       output when using the -s command line argument while checking a file.
+    -->
+    <rule ref="Internal.NoCodeFound">
+        <severity>0</severity>
+    </rule>
+
+    <!-- If string doesn't contain variables or single quotes, use single quotes. -->
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+        <!-- Not check variable substitution -->
+        <severity>0</severity>
+    </rule>
+    <!--
+   Some sniffs have public member vars that allow you to
+   customise specific elements of the sniff. In the case of
+   the Generic LineLength sniff, you can customise the limit
+   at which the sniff will throw warnings and the limit at
+   which it will throw errors.
+
+   The rule below includes the LineLength sniff but changes the
+   settings so the sniff will show warnings for any line longer
+   than 90 chars and errors for any line longer than 100 chars.
+-->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="90"/>
+            <property name="absoluteLineLimit" value="100"/>
+        </properties>
+        <message>参数%s在函数中没有用到</message>
+    </rule>
+
+    <rule ref="Generic.Files.LineEndings">
+        <properties>
+            <property name="eolChar" value="\n"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="80"/>
+            <property name="absoluteLineLimit" value="120"/>
+        </properties>
+    </rule>
+
+</ruleset>

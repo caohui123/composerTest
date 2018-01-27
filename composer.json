@@ -1,0 +1,36 @@
+{
+    "name": "gstore/appstore",
+    "description": "appstore website",
+    "require": {
+        "symfony/http-kernel":  "*",
+        "symfony/dependency-injection":  "*",
+        "symfony/event-dispatcher":  "*",
+        "symfony/http-foundation":  "*",
+        "symfony/routing":  "*",
+        "symfony/console": "*",
+        "symfony/class-loader": "*",
+        "illuminate/database": "*",
+        "silex/silex": "~2.0",
+        "workerman/workerman": "*",
+        "symfony/workflow": "*",
+        "patrickschur/language-detection": "*",
+        "ngyuki/db-migrate": "*",
+        "symfony/yaml": "*",
+        "symfony/stopwatch": "*",
+        "symfony/templating": "*"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/src/"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}

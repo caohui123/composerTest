@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Gionee">
+    <description>gionee Web Application Coding Standard</description>
+
+    <!-- Treat all files as UTF-8. -->
+    <config name="encoding" value="utf-8"/>
+
+    <!-- Default tab width for indentation fixes and such. -->
+    <arg name="tab-width" value="4"/>
+    <arg name="report" value="json"/>
+    <arg name="extensions" value="php"/>
+    <arg name="basepath" value="."/>
+    <ini name="memory_limit" value="1024M"/>
+
+    <rule ref="PSR2">
+        <!-- Property names MUST start with an initial underscore if they are private. -->
+        <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
+
+        <!-- Opening parenthesis of a multi-line function call must be the last content on the line. -->
+        <!-- Closing parenthesis of a multi-line function call must be on a line by itself. -->
+        <!-- Only one argument is allowed per line in a multi-line function call. -->
+        <exclude name="PEAR.Functions.FunctionCallSignature"/>
+
+        <!-- We don't have line length (line width) limits. -->
+        <!-- <exclude name="Generic.Files.LineLength"/>-->
+
+        <!-- CASE keyword must be indented 4 spaces from SWITCH keyword. -->
+        <exclude name="PSR2.ControlStructures.SwitchDeclaration"/>
+
+    </rule>
+
+    <!-- Covers rule: Class names should use capitalized words separated by underscores. 兼容下划线的类名-->
+    <rule ref="PEAR.NamingConventions.ValidClassName">
+        <type>warning</type>
+    </rule>
+    <!--类名和文件名检查<rule ref="Squiz.Classes.ClassFileName"/>-->
+    <!--
+       Boolean values should be specified by using the strings
+       "true" and "false" rather than the integers 0 and 1.
+    -->
+    <rule ref="Generic.Formatting.MultipleStatementAlignment">
+        <properties>
+            <property name="maxPadding" value="8"/>
+            <property name="ignoreMultiLine" value="true"/>
+            <property name="error" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="Generic.Formatting.MultipleStatementAlignment.IncorrectWarning">
+        <message>赋值表达式格式错误，变量与“=”之间应该空%d格，实际空了%d格</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found">
+        <message>参数%s在函数中没有用到</message>
+        <type>warning</type>
+    </rule>
+
+    <rule ref="PEAR.NamingConventions.ValidClassName.StartWithCaptial">
+        <message>类名必须大写字母开头</message>
+    </rule>
+
+    <rule ref="PEAR.Classes.ClassDeclaration.OpenBraceNewLine">
+        <message>类定义的左花括号 { 应另起一行</message>
+        <type>warning</type>
+    </rule>
+
+    <rule ref="PEAR.Functions.ValidDefaultValue.NotAtEnd">
+        <message>带有默认值的参数，必须放到参数表的末端</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Functions.FunctionDeclaration.BraceOnSameLine">
+        <message>函数/方法定义的左花括号 { 应另起一行</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.WhiteSpace.ScopeClosingBrace.Line">
+        <message>右花括号 } 应另起一行</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.WhiteSpace.ScopeClosingBrace.Indent">
+        <message>右花括号 } 缩进空格数错误，应该为%d，实际为%d</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.WhiteSpace.ScopeIndent.Incorrect">
+        <message>缩进空格数错误，应该为%d，实际为%d</message>
+        <type>warning</type>
+    </rule>
+
+    <rule ref="PEAR.Commenting.FileComment.Missing">
+        <message>缺少文件的块注释</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.Missing">
+        <message>缺少函数/方法的块注释</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.WrongStyle">
+        <message>错误的块注释格式，应以 /** 开头</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.MissingParamTag">
+        <message>函数/方法的块注释中，缺少参数 %s 的说明</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.MissingReturn">
+        <message>函数/方法的块注释中，缺少 @return 标签</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.SpacingBeforeTags">
+        <message>函数/方法的块注释中，@TAG标签前需要空一行</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.SpacingBeforeParamType">
+        <message>参数注释@param中，参数类型前应该只有一个空格</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.ParameterNamesNotAligned">
+        <message>参数注释@param中，%s(%d)与%s(%d)的参数名称未对齐</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.ParameterCommentsNotAligned">
+        <message>参数注释@param中，%s(%d)与%s(%d)的参数说明未对齐</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.ParamNameNoMatch">
+        <message>参数注释@param中，参数名“%s”与实际名称不符</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.MissingParamName">
+        <message>参数注释@param中，缺少参数名称</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.MissingParamComment">
+        <message>参数注释@param中，缺少参数说明</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="PEAR.Commenting.FunctionComment.SpacingAfterParams">
+        <message>最后一个参数注释@param后，应该空一行</message>
+        <type>warning</type>
+    </rule>
+
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing.NoSpaceBefore">
+        <message>操作符前边应该有一个空格</message>
+        <type>warning</type>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing.NoSpaceAfter">
+        <message>操作符后边应该有一个空格</message>
+        <type>warning</type>
+    </rule>
+
+    <!--文件长度-->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="90"/>
+            <property name="absoluteLineLimit" value="120"/>
+        </properties>
+        <type>warning</type>
+    </rule>
+
+    <!--
+   If you want to completely disable an error message in a sniff
+   but you don't want to exclude the whole sniff, you can
+   change the severity of the message to 0. In this case, we
+   want the Squiz DoubleQuoteUsage sniff to be included in our
+   standard, but we don't want the ContainsVar error message to
+   ever be displayed.
+    -->
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+        <severity>0</severity>
+        <type>warning</type>
+    </rule>
+    <!-- Property declaration rules. -->
+    <!-- TODO: -->
+
+    <!-- Function call signature. -->
+    <!-- TODO: -->
+
+    <!-- Switch declaration. -->
+    <!-- TODO: -->
+
+    <!-- Ignore for migrations. -->
+    <!-- Ignore missing namespace for migrations -->
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <exclude-pattern>m\d{6}_\d{6}_.+\.php$</exclude-pattern>
+    </rule>
+    <!-- Ignore camel caps format for class name of migrations -->
+    <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
+        <exclude-pattern>m\d{6}_\d{6}_.+\.php$</exclude-pattern>
+    </rule>
+
+    <!-- Ignore for tests. -->
+    <!-- Ignore method name prefixed with underscore to indicate visibility -->
+    <rule ref="PSR2.Methods.MethodDeclaration.Underscore">
+        <exclude-pattern>tests?/*(Cest|Test).php$</exclude-pattern>
+    </rule>
+    <!-- Ignore declare new symbols and execute logic with side effects same file -->
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>/tests?*/_bootstrap.php$</exclude-pattern>
+        <exclude-pattern>/web/(index|index-test).php$</exclude-pattern>
+    </rule>
+
+    <exclude-pattern>*/tests/*</exclude-pattern>
+    <exclude-pattern>*/data/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/config/*</exclude-pattern>
+    <exclude-pattern>*/migrate/*</exclude-pattern>
+    <!-- Exclude minified Javascript files. -->
+    <exclude-pattern>*.min.js</exclude-pattern>
+
+</ruleset>
