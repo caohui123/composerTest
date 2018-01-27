@@ -30,10 +30,11 @@ $dispatcher->dispatch(OrderEvent::NAME, $event);
 
 $order->setPrice(20);
 $order->setName('mac');
+$event1 = new OrderEvent($order);
 $subscriber = new StoreSubscriber();
 $dispatcher->addSubscriber($subscriber);
-$dispatcher->dispatch('onStoreOrder',$event);
-
+$dispatcher->dispatch('onStoreOrder',$event1);
+echo 'dddddd';
 $order->setPrice(30);
 $order->setName('iphone');
 $event = new \Symfony\Component\EventDispatcher\GenericEvent($order);
